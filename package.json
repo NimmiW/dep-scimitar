@@ -1,0 +1,23 @@
+{
+  "name": "dep-scimitar",
+  "version": "0.0.1",
+  "description": "Stop CI builds triggered due to unused dependency upgrades.",
+  "bin": {
+    "dep-scimitar": "lib/bin/depupgradecheck.js"
+  },
+  "author": "anonymous",
+  "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: no test specified\"",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "depcheck": "1.4.3",
+    "@actions/core": "^1.10.0",
+    "shelljs": "^0.8.5",
+    "axios":"1.5.1"
+  },
+  "files": [
+    "lib"
+  ]
+}

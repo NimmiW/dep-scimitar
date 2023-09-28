@@ -1,0 +1,47 @@
+name: Link MyPackage
+
+on:
+  push:
+    branches:
+      - main  # Adjust this to match your repository's default branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Install MyPackage Dependencies
+        run: |
+          npm install dep-scimitar
+          unusedDepChange=$(npx dep-scimitar runremote) 
+          echo "UnusedDepChange=$unusedDepChange" >> $GITHUB_ENV
+
+      - name: other steps
+        if:  ${{ env.UnusedDepChange != 1 }} # check the results of Dep-sCImitar
+        run: |
+          cd $GITHUB_WORKSPACE
+          echo "Current directory: $(pwd)"
+          echo "Contents of the directory: $(ls -a)"
+          git log -n 1 --format="%H"  
+          git log -n 1 --format="%P" 
+
+      - name: more steps
+        if:  ${{ env.UnusedDepChange != 1 }}
+        run: |
+          cd $GITHUB_WORKSPACE
+          echo "Current directory: $(pwd)"
+          echo "Contents of the directory: $(ls -a)"
+          git log -n 1 --format="%H"  
+          git log -n 1 --format="%P" 
+          npm install
