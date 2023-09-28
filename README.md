@@ -1,6 +1,6 @@
 # Dep-sCImitar
 
-![alt text](scimitar.png)
+![alt text](https://static.thenounproject.com/png/819829-200.png)
 
 Dep-sCImitar is a prototype tool to cut down the CI waste induced by unused NPM dependencies. 
 It can skip CI builds that are invoked by version updates to unused-dependencies. 

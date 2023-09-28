@@ -1,6 +1,6 @@
 {
   "name": "dep-scimitar",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Stop CI builds triggered due to unused dependency upgrades.",
   "bin": {
     "dep-scimitar": "lib/bin/depupgradecheck.js"
